@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "^3.5.0",
+    "@adiwajshing/baileys": "^3.4.1",
+    "@vitalets/google-translate-api": "github:vitalets/google-translate-api",
     "async": "^2.4.1",
     "awesome-phonenumber": "^2.48.0",
     "axios": "^0.21.1",
@@ -27,7 +28,9 @@
     "insta-fetcher": "^1.2.3",
     "jsdom": "^16.5.2",
     "moment-timezone": "^0.5.33",
+    "parse-ms": "^2.1.0",
     "performance-now": "^2.1.0",
+    "print": "^1.2.0",
     "qrcode-terminal": "^0.12.0",
     "qs": "^6.10.1",
     "request": "^2.88.2",
@@ -35,7 +38,8 @@
     "spinnies": "^0.5.1",
     "tiktok-scraper-without-watermark": "^1.0.6",
     "twitter-url-direct": "^1.0.1",
-    "yt-search": "^2.7.6"
+    "yt-search": "^2.7.6",
+    "zrapi": "0.0.6"
   },
   "scripts": {
     "start": "node main",
