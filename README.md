@@ -8,24 +8,24 @@
 >
 </div>
 <p align="center">
-  <a href="https://github.com/Hexagonz"><img title="Author" src="https://img.shields.io/badge/Author-Hexagonz-red.svg?style=for-the-badge&logo=github" /></a>
+  <a href="https://github.com/mantan18220"><img title="Author" src="https://img.shields.io/badge/Author-Hexagonz-red.svg?style=for-the-badge&logo=github" /></a>
   <h4 align="center">
-  <a href="https://wa.me/6285751056816">KYAAA ONI CHAN >//< </a>
+  <a href="https://wa.me/6285147911xxx">KYAAA ONI CHAN >//< </a>
 </h4>
 </p>
 
 ## CARA INSTALL DI TERMUX
 ```bash
 > pkg install nodejs && pkg install git
-> git clone https://github.com/Hexagonz/SELF-HX
-> cd SELF-HX
+> git clone https://github.com/mantan18220/SELF-BOTWA.git
+> cd SELF-BOTWA
 > bash install.sh
 > npm start/node main.js
 ```
 ## CARA INSTALL DI LAPTOP
 ```bash
-> git clone https://github.com/Hexagonz/SELF-HX 
-> cd SELF-HX
+> git clone https://github.com/mantan18220/SELF-BOTWA.git 
+> cd SELF-BOTWA
 > npm i
 > npm start/node main.js
 ```
@@ -109,6 +109,6 @@
 * [`Baileys`](https://github.com/adiwajshing/Baileys)
 * [`MhankBarBar`](https://github.com/MhankBarBar)
 * [`MRHRTZ`](https://github.com/MRHRTZ)
-  
+* [`HEXAGONZ`](https://github.com/hexagonz)
   
 New Revsjwoe9od
