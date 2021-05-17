@@ -1,7 +1,7 @@
 {
-  "name": "HEXAGONZ",
+  "name": "RidwanXyZ",
   "version": "1.0.0",
-  "description": "HEXA",
+  "description": "MEKK",
   "main": "main.js",
   "directories": {
     "lib": "lib"
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hexagonz"
+    "url": "git+https://github.com/mantan18220/SELF-BOTWA"
   },
   "keywords": [
     "Wasu"
@@ -55,7 +55,7 @@
   "author": "HEXAGON",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hexagonz"
+    "url": "https://github.com/mantan18220"
   },
-  "homepage": "https://github.com/Hexagonz"
+  "homepage": "https://github.com/mantan18220"
 }
