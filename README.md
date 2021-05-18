@@ -1,18 +1,3 @@
-<div align="center">
-<img src="https://i.ibb.co/qCHNd0j/36fa310d84b9844bbea4eaf9d6462eed5d6127c6.jpg" alt="SELF-HX" width="300" />
-
-# DAHLAH
-
->
->
->
-</div>
-<p align="center">
-  <a href="https://github.com/mantan18220"><img title="Author" src="https://img.shields.io/badge/Author-Hexagonz-red.svg?style=for-the-badge&logo=github" /></a>
-  <h4 align="center">
-  <a href="https://wa.me/6285147911xxx">KYAAA ONI CHAN >//< </a>
-</h4>
-</p>
 
 ## CARA INSTALL DI TERMUX
 ```bash
