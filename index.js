@@ -88,7 +88,7 @@ fake = `_ [ 𝙎𝙀𝙇𝙁-𝘽𝙊𝙏 ] _`
 numbernye = '0'
 banChats = true
 offline = false
-botname = `${pushname}! pen jilmek`
+botname = `${pushname}`
 owner = '' //isi nomor kau
 waktu = ''
 alasan = ''
@@ -113,7 +113,7 @@ baterai = {
 }
 fake2 = `JAM: ${time}
 BATRE: ${baterai.battery}
-STATUS: ${baterai.cas ? 'Ngecas⚡' : '~Ngecas~'}`
+STATUS: ${baterai.cas === true ? 'Ngecas⚡' : '~Ngecas~'}`
 //run = process.uptime()
 
 //=================================================//
@@ -1101,8 +1101,8 @@ nj = `https://lolhuman.herokuapp.com/api/removebg?apikey=ridwanxyz&img=${res}`
             sendStickerFromUrl(from,nj)
 break
 case prefix+ 'ttdl':
-		b = body.slice(6)
-		if (!b) return balas('Link nya mana konsoll?')
+		
+		if (!q) return reply('Link nya mana konsoll?')
 		sendStickerFromUrl(from, `https://telegra.ph/file/2c25c9a02cd4f68052435.png`)
 		mber = await axios.get(`https://api.zeks.xyz/api/tiktok?url=${q}&apikey=${zeks}`)
 		fer = await getBuffer(mber.data.no_watermark)
