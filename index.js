@@ -1181,69 +1181,6 @@ case prefix+ 'getpic':
 				}
 				break
 
-
-
-
-case prefix+ 'antidelete':
-                                const groupId = isGroup ? groupMetadata.jid : ''
-                                const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
-                                const dataCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked.json'))
-                                const dataBanCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked-banlist.json'))
-                                const isRevoke = dataRevoke.includes(from)
-                                const isCtRevoke = dataCtRevoke.data
-                                const isBanCtRevoke = dataBanCtRevoke.includes(sender) ? true : false
-                                //const argz = arg.split(' ')
-                                if (args.length < 1) return hexa.sendMessage(from, `Penggunaan fitur antidelete :\n\n${prefix}antidelete [on/off]`, MessageType.text)
-                                   if (args[0] == 'on') {           
-                                        if (isGroup) {
-                                                if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
-                                                if (isRevoke) return hexa.sendMessage(from, `Antidelete telah diaktifkan di grup ini sebelumnya!`, MessageType.text)
-                                                dataRevoke.push(from)
-                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
-                                                hexa.sendMessage(from, `Succes Enable Antidelete Grup!`, MessageType.text, {quoted: mek})
-                                        } else if (!isGroup) {
-                                                hexa.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctaktif`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'ctaktif') {
-                                        if (!isGroup) {
-                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                                if (isCtRevoke) return hexa.sendMessage(from, `Antidelete telah diaktifkan di semua kontak sebelumnya!`, MessageType.text)
-                                                dataCtRevoke.data = true
-                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
-                                                hexa.sendMessage(from, `Antidelete diaktifkan disemua kontak!`, MessageType.text, {quoted: mek})
-                                        } else if (isGroup) {
-                                                hexa.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete aktif`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'banct') {
-                                 if (!isOwner && !issowner && !istowner) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                        if (isBanCtRevoke) return hexa.sendMessage(from, `kontak ini telah ada di database banlist!`, MessageType.text)
-                                        if (args.length === 2 || args[2].startsWith('0')) return benny.sendMessage(from, `Masukan nomer diawali dengan 62! contoh 62859289xxxxx`, MessageType.text)
-                                        dataBanCtRevoke.push(args[2] + '@s.whatsapp.net')
-                                        fs.writeFileSync('./src/ct-revoked-banlist.json', JSON.stringify(dataBanCtRevoke))
-                                        hexa.sendMessage(from, `Kontak ${args[2]} telah dimasukan ke banlist antidelete secara permanen!`, MessageType.text)
-                                 } else if (args[0] == 'off') {
-                                        if (isGroup) {
-                                          if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
-                                           if (!isRevoke) return reply('Anti delete sudah di nonaktifkan')
-                                                const index = dataRevoke.indexOf(from)
-                                                dataRevoke.splice(index, 1)
-                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
-                                                hexa.sendMessage(from, `Succes disable Antidelete Grup!`, MessageType.text)
-                                        } else if (!isGroup) {
-                                                hexa.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctmati`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'ctmati') {
-                                        if (!isGroup) {
-                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                                dataCtRevoke.data = false
-                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
-                                                hexa.sendMessage(from, `Antidelete dimatikan disemua kontak!`, MessageType.text)
-                                        } else if (isGroup) {
-                                                hexa.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete mati`, MessageType.text)
-                                        }
-                                }
-                                break
-
 case prefix+ 'listgc': 
 case prefix+ 'listgrup': 
 case prefix+ 'grouplist':
@@ -1269,7 +1206,7 @@ case prefix+ 'tourl':
             boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.
 extendedTextMessage.contextInfo : mek
             owgi = await hexa.downloadMediaMessage(boij)
-            res = await upload(owgi)
+            res = await uploadImages(owgi)
             reply(res)
             } else {
             reply('kirim/reply gambar/video')
@@ -1427,7 +1364,7 @@ case prefix+ 'autorespon':
 
 
 //ngentod
-//
+//emror
 case 'uptele':
 				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 				const mediaq = await hexa.downloadMediaMessage(encmediiia)
@@ -1444,7 +1381,7 @@ case prefix+ 'tourl2':
   }
             break
 case prefix+ 'shutdown':
-if (!itsMe) return reply('nte sape?')
+if (!mek.key.fromMe) return reply('nte sape?')
 reply('Siap tuan...')
 hexa.close()
 break
@@ -1459,7 +1396,7 @@ break
 case prefix+ 'cita-cita':
 reply(`Kak ${pushname} cita-citanya apa ya? hmm`)
 okw = await getBuffer('https://pencarikode.xyz/api/cita-cita?apikey=pais')
-hexa.sendMessage(from, okw, audio,{mimetype: "mp3/audio", quoted: mek, ptt: true})
+hexa.sendMessage(from, okw, audio,{mimetype: "audio/mp4", quoted: mek, ptt: true})
 break
 
 case prefix+ 'ssweb2':
