@@ -88,7 +88,7 @@ fake = `_ [ 𝙎𝙀𝙇𝙁-𝘽𝙊𝙏 ] _`
 numbernye = '0'
 banChats = true
 offline = false
-botname = `${pushname}`
+botname = `${pushname}! pen jilmek`
 owner = '' //isi nomor kau
 waktu = ''
 alasan = ''
@@ -113,7 +113,7 @@ baterai = {
 }
 fake2 = `JAM: ${time}
 BATRE: ${baterai.battery}
-STATUS: ${baterai.cas === true ? 'Ngecas⚡' : '~Ngecas~'}`
+STATUS: ${baterai.cas ? 'Ngecas⚡' : '~Ngecas~'}`
 //run = process.uptime()
 
 //=================================================//
@@ -765,7 +765,6 @@ ${shape}  ${prefix}ttp
 ${shape}  ${prefix}sleding (teks)
 ${shape}  ${prefix}spamsms 6289xxx
 ${shape}  ${prefix}inspect (linkgrup)
-${shape}  ${prefix}cita-cita
 │
 │
 │
@@ -982,7 +981,6 @@ sendFileFromUrl(res[0].link, document, {mimetype: res[0].mime, filename: res[0].
 break
 
 case prefix+ 'infoall':
-case prefix+ 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					var nom = mek.participant
 					members_id = []
@@ -991,7 +989,7 @@ case prefix+ 'tagall':
 						teks += `┣❥   @${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
 					}
-					mentions(`*From :* - [ 𝙎𝙀𝙇𝙁 𝘽𝙊𝙏 ] -\n*Info :*  ${body.slice(9)}\n*Total Member :* ${groupMembers.length} \n\n┏━━━⟪ *INGFONYA* ⟫━━━┓`+teks+`└─「 ❏ *SELF-BOT* ❏ 」` `, members_id, true)
+					mentions(`*From :* - [ 𝙎𝙀𝙇𝙁 𝘽𝙊𝙏 ] -\n*Info :*  ${body.slice(9)}\n*Total Member :* ${groupMembers.length} \n\n┏━━━⟪ *INGFONYA* ⟫━━━┓`+teks+`╚═ *「 ${pushname} emang ngntd 」* `, members_id, true)
 					break
 
 
@@ -1012,7 +1010,7 @@ case prefix+ 'cekchat':
 					hexa.sendMessage(from, `Total : ${totalchat.length} Chat`, text, {quoted  : ftoko, sendEphemeral: true})
 					break
 
-case prefix+ 'listonline':
+case prefix+ 'sider':
                 if (!isGroup) return reply(`Only group`)
                 let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
                 let online = [...Object.keys(hexa.chats.get(ido).presences), hexa.user.jid]
@@ -1035,10 +1033,10 @@ sendFileFromUrl(res[0].thumb, image, {quoted: mek, caption: result, sendEphemera
 break
 
 case prefix+ 'tovn':
-if (!isQuoteAudio) return reply('Tag Audio Yang Mau Di Jadiin Vn')
+if (!isTagedAudio) return reply('Tag Audio Yang Mau Di Jadiin Vn')
 reply(mess.wait)
 aud = await hexa.downloadMediaAndSaveMeduaMessage(encmedua)
-hexa.sendMessage(from, aud, audio, {mimetype: 'audio/mp4', quoted: mek, ptt : true})
+hexa.sendMessage(from, aud, audio, {mimetype: 'audio/mp4',ptt : true})
 
 case prefix+ 'fordward':
 		if (!mek.key.fromMe) return balas('tidak bisa kak!')
@@ -1103,8 +1101,7 @@ nj = `https://lolhuman.herokuapp.com/api/removebg?apikey=ridwanxyz&img=${res}`
             sendStickerFromUrl(from,nj)
 break
 case prefix+ 'ttdl':
-		
-		if (!q) return reply('Link nya mana konsoll?')
+		if (!q) return balas('Link nya mana konsoll?')
 		sendStickerFromUrl(from, `https://telegra.ph/file/2c25c9a02cd4f68052435.png`)
 		mber = await axios.get(`https://api.zeks.xyz/api/tiktok?url=${q}&apikey=${zeks}`)
 		fer = await getBuffer(mber.data.no_watermark)
@@ -1135,7 +1132,7 @@ await hexa.sendMessage(from, lagu, audio,{mimetype: `audio/mp4`, filename: `${q}
 break
 
     case prefix+ 'status':
-            fakestatus(`*STATUS*\n${offline ? '${shape} OFFLINE' : '${shape} ONLINE'}\n${shape} WA VERSION: ${hexa.user.phone.wa_version}\n${shape} OS VERSION: ${hexa.user.phone.os_version}\n${shape} DEVICE: ${hexa.user.phone.device_manufacturer}, ${hexa.user.phone.device_model}, ${hexa.user.phone.os_build_number}\n${shape} BATERAI ${baterai.battery} ${baterai.cas === true ? `Ngecas⚡` : `~Ngecas~`}\n${shape} RUNTIME ${kyun(run)}\n${banChats ? '└─⦿ SELF-MODE' : '└─⦿ PUBLIC-MODE'}`, ({contextInfo: {forwadingScore: 508, isForwarded: true}}))
+            fakestatus(`*STATUS*\n${offline ? '${shape} OFFLINE' : '${shape} ONLINE'}\n${shape} WA VERSION: ${hexa.user.phone.wa_version}\n${shape} OS VERSION: ${hexa.user.phone.os_version}\n${shape} DEVICE: ${hexa.user.phone.device_manufacturer}, ${hexa.user.phone.device_model}, ${hexa.user.phone.os_build_number}\n${shape} BATERAI ${baterai.battery} ${baterai.cas == true ? `Ngecas⚡` : `~Ngecas~`}\n${shape} RUNTIME ${kyun(run)}\n${banChats ? '└─⦿ SELF-MODE' : '└─⦿ PUBLIC-MODE'}`, ({contextInfo: {forwadingScore: 508, isForwarded: true}}))
             break
 
 			    case prefix+ 'on':
@@ -1160,7 +1157,7 @@ break
             })   
             break
 
-
+//KONTOLLLLLLLL
 
 case prefix+ 'unpin':
                 if (!mek.key.fromMe) return reply('*Kamu Owner?*')
@@ -1169,7 +1166,7 @@ case prefix+ 'unpin':
                 console.log('unpin chat = ' + from)
                 break
 
-
+// ANTI DELETE
 case prefix+ 'getpic':
 				if (mek.message.extendedTextMessage != undefined){
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -1182,6 +1179,69 @@ case prefix+ 'getpic':
 					hexa.sendMessage(from, thumb)
 				}
 				break
+
+
+
+
+case prefix+ 'antidelete':
+                                const groupId = isGroup ? groupMetadata.jid : ''
+                                const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
+                                const dataCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked.json'))
+                                const dataBanCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked-banlist.json'))
+                                const isRevoke = dataRevoke.includes(from)
+                                const isCtRevoke = dataCtRevoke.data
+                                const isBanCtRevoke = dataBanCtRevoke.includes(sender) ? true : false
+                                //const argz = arg.split(' ')
+                                if (args.length < 1) return hexa.sendMessage(from, `Penggunaan fitur antidelete :\n\n${prefix}antidelete [on/off]`, MessageType.text)
+                                   if (args[0] == 'on') {           
+                                        if (isGroup) {
+                                                if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
+                                                if (isRevoke) return hexa.sendMessage(from, `Antidelete telah diaktifkan di grup ini sebelumnya!`, MessageType.text)
+                                                dataRevoke.push(from)
+                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
+                                                hexa.sendMessage(from, `Succes Enable Antidelete Grup!`, MessageType.text, {quoted: mek})
+                                        } else if (!isGroup) {
+                                                hexa.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctaktif`, MessageType.text)
+                                        }
+                                } else if (args[0] == 'ctaktif') {
+                                        if (!isGroup) {
+                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
+                                                if (isCtRevoke) return hexa.sendMessage(from, `Antidelete telah diaktifkan di semua kontak sebelumnya!`, MessageType.text)
+                                                dataCtRevoke.data = true
+                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
+                                                hexa.sendMessage(from, `Antidelete diaktifkan disemua kontak!`, MessageType.text, {quoted: mek})
+                                        } else if (isGroup) {
+                                                hexa.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete aktif`, MessageType.text)
+                                        }
+                                } else if (args[0] == 'banct') {
+                                 if (!isOwner && !issowner && !istowner) return reply('Hanya Bisa dilakukan Oleh Owner')
+                                        if (isBanCtRevoke) return hexa.sendMessage(from, `kontak ini telah ada di database banlist!`, MessageType.text)
+                                        if (args.length === 2 || args[2].startsWith('0')) return benny.sendMessage(from, `Masukan nomer diawali dengan 62! contoh 62859289xxxxx`, MessageType.text)
+                                        dataBanCtRevoke.push(args[2] + '@s.whatsapp.net')
+                                        fs.writeFileSync('./src/ct-revoked-banlist.json', JSON.stringify(dataBanCtRevoke))
+                                        hexa.sendMessage(from, `Kontak ${args[2]} telah dimasukan ke banlist antidelete secara permanen!`, MessageType.text)
+                                 } else if (args[0] == 'off') {
+                                        if (isGroup) {
+                                          if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
+                                           if (!isRevoke) return reply('Anti delete sudah di nonaktifkan')
+                                                const index = dataRevoke.indexOf(from)
+                                                dataRevoke.splice(index, 1)
+                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
+                                                hexa.sendMessage(from, `Succes disable Antidelete Grup!`, MessageType.text)
+                                        } else if (!isGroup) {
+                                                hexa.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctmati`, MessageType.text)
+                                        }
+                                } else if (args[0] == 'ctmati') {
+                                        if (!isGroup) {
+                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
+                                                dataCtRevoke.data = false
+                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
+                                                hexa.sendMessage(from, `Antidelete dimatikan disemua kontak!`, MessageType.text)
+                                        } else if (isGroup) {
+                                                hexa.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete mati`, MessageType.text)
+                                        }
+                                }
+                                break
 
 case prefix+ 'listgc': 
 case prefix+ 'listgrup': 
@@ -1208,7 +1268,7 @@ case prefix+ 'tourl':
             boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.
 extendedTextMessage.contextInfo : mek
             owgi = await hexa.downloadMediaMessage(boij)
-            res = await uploadImages(owgi)
+            res = await upload(owgi)
             reply(res)
             } else {
             reply('kirim/reply gambar/video')
@@ -1366,7 +1426,7 @@ case prefix+ 'autorespon':
 
 
 //ngentod
-//emror
+//
 case 'uptele':
 				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 				const mediaq = await hexa.downloadMediaMessage(encmediiia)
@@ -1383,7 +1443,7 @@ case prefix+ 'tourl2':
   }
             break
 case prefix+ 'shutdown':
-if (!mek.key.fromMe) return reply('nte sape?')
+if (!itsMe) return reply('nte sape?')
 reply('Siap tuan...')
 hexa.close()
 break
@@ -1398,7 +1458,7 @@ break
 case prefix+ 'cita-cita':
 reply(`Kak ${pushname} cita-citanya apa ya? hmm`)
 okw = await getBuffer('https://pencarikode.xyz/api/cita-cita?apikey=pais')
-hexa.sendMessage(from, okw, audio,{mimetype: "audio/mp4", quoted: mek, ptt: true})
+hexa.sendMessage(from, okw, audio,{mimetype: "mp3/audio", quoted: mek, ptt: true})
 break
 
 case prefix+ 'ssweb2':
@@ -2111,8 +2171,27 @@ case 'kontaktag':
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		    media = await hexa.downloadAndSaveMediaMessage(encmedia)
             anu = args.join(' ').split('|')
-            satu = anu[0] !== '' ? anu[0] : `${puhname}`
-            dua = typeof anu[1] !== 'undefined' ? anu[1] : `    `
+            satu = anu[0] !== '' ? anu[0] : `Ridwan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`
+            dua = typeof anu[1] !== 'undefined' ? anu[1] : `XyZ`
             require('./lib/fetcher.js').createExif(satu, dua)
 			require('./lib/fetcher.js').modStick(media, hexa, mek, from)
 			break
