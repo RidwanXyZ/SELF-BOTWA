@@ -765,6 +765,7 @@ ${shape}  ${prefix}ttp
 ${shape}  ${prefix}sleding (teks)
 ${shape}  ${prefix}spamsms 6289xxx
 ${shape}  ${prefix}inspect (linkgrup)
+${shape}  ${prefix}cita-cita
 │
 │
 │
