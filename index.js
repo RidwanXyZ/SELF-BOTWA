@@ -982,6 +982,7 @@ sendFileFromUrl(res[0].link, document, {mimetype: res[0].mime, filename: res[0].
 break
 
 case prefix+ 'infoall':
+case prefix+ 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					var nom = mek.participant
 					members_id = []
@@ -990,7 +991,7 @@ case prefix+ 'infoall':
 						teks += `┣❥   @${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
 					}
-					mentions(`*From :* - [ 𝙎𝙀𝙇𝙁 𝘽𝙊𝙏 ] -\n*Info :*  ${body.slice(9)}\n*Total Member :* ${groupMembers.length} \n\n┏━━━⟪ *INGFONYA* ⟫━━━┓`+teks+`╚═ *「 ${pushname} emang ngntd 」* `, members_id, true)
+					mentions(`*From :* - [ 𝙎𝙀𝙇𝙁 𝘽𝙊𝙏 ] -\n*Info :*  ${body.slice(9)}\n*Total Member :* ${groupMembers.length} \n\n┏━━━⟪ *INGFONYA* ⟫━━━┓`+teks+`└─「 ❏ *SELF-BOT* ❏ 」` `, members_id, true)
 					break
 
 
@@ -1011,7 +1012,7 @@ case prefix+ 'cekchat':
 					hexa.sendMessage(from, `Total : ${totalchat.length} Chat`, text, {quoted  : ftoko, sendEphemeral: true})
 					break
 
-case prefix+ 'sider':
+case prefix+ 'listonline':
                 if (!isGroup) return reply(`Only group`)
                 let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
                 let online = [...Object.keys(hexa.chats.get(ido).presences), hexa.user.jid]
@@ -1034,10 +1035,10 @@ sendFileFromUrl(res[0].thumb, image, {quoted: mek, caption: result, sendEphemera
 break
 
 case prefix+ 'tovn':
-if (!isTagedAudio) return reply('Tag Audio Yang Mau Di Jadiin Vn')
+if (!isQuoteAudio) return reply('Tag Audio Yang Mau Di Jadiin Vn')
 reply(mess.wait)
 aud = await hexa.downloadMediaAndSaveMeduaMessage(encmedua)
-hexa.sendMessage(from, aud, audio, {mimetype: 'audio/mp4',ptt : true})
+hexa.sendMessage(from, aud, audio, {mimetype: 'audio/mp4', quoted: mek, ptt : true})
 
 case prefix+ 'fordward':
 		if (!mek.key.fromMe) return balas('tidak bisa kak!')
@@ -2110,27 +2111,8 @@ case 'kontaktag':
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		    media = await hexa.downloadAndSaveMediaMessage(encmedia)
             anu = args.join(' ').split('|')
-            satu = anu[0] !== '' ? anu[0] : `Ridwan
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-`
-            dua = typeof anu[1] !== 'undefined' ? anu[1] : `XyZ`
+            satu = anu[0] !== '' ? anu[0] : `${puhname}`
+            dua = typeof anu[1] !== 'undefined' ? anu[1] : `    `
             require('./lib/fetcher.js').createExif(satu, dua)
 			require('./lib/fetcher.js').modStick(media, hexa, mek, from)
 			break
