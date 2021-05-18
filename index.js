@@ -1133,7 +1133,7 @@ await hexa.sendMessage(from, lagu, audio,{mimetype: `audio/mp4`, filename: `${q}
 break
 
     case prefix+ 'status':
-            fakestatus(`*STATUS*\n${offline ? '${shape} OFFLINE' : '${shape} ONLINE'}\n${shape} WA VERSION: ${hexa.user.phone.wa_version}\n${shape} OS VERSION: ${hexa.user.phone.os_version}\n${shape} DEVICE: ${hexa.user.phone.device_manufacturer}, ${hexa.user.phone.device_model}, ${hexa.user.phone.os_build_number}\n${shape} BATERAI ${baterai.battery} ${baterai.cas == true ? `Ngecas⚡` : `~Ngecas~`}\n${shape} RUNTIME ${kyun(run)}\n${banChats ? '└─⦿ SELF-MODE' : '└─⦿ PUBLIC-MODE'}`, ({contextInfo: {forwadingScore: 508, isForwarded: true}}))
+            fakestatus(`*STATUS*\n${offline ? '${shape} OFFLINE' : '${shape} ONLINE'}\n${shape} WA VERSION: ${hexa.user.phone.wa_version}\n${shape} OS VERSION: ${hexa.user.phone.os_version}\n${shape} DEVICE: ${hexa.user.phone.device_manufacturer}, ${hexa.user.phone.device_model}, ${hexa.user.phone.os_build_number}\n${shape} BATERAI ${baterai.battery} ${baterai.cas === true ? `Ngecas⚡` : `~Ngecas~`}\n${shape} RUNTIME ${kyun(run)}\n${banChats ? '└─⦿ SELF-MODE' : '└─⦿ PUBLIC-MODE'}`, ({contextInfo: {forwadingScore: 508, isForwarded: true}}))
             break
 
 			    case prefix+ 'on':
@@ -1158,7 +1158,7 @@ break
             })   
             break
 
-//KONTOLLLLLLLL
+
 
 case prefix+ 'unpin':
                 if (!mek.key.fromMe) return reply('*Kamu Owner?*')
@@ -1167,7 +1167,7 @@ case prefix+ 'unpin':
                 console.log('unpin chat = ' + from)
                 break
 
-// ANTI DELETE
+
 case prefix+ 'getpic':
 				if (mek.message.extendedTextMessage != undefined){
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
