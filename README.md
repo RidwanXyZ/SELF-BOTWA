@@ -2,14 +2,14 @@
 ## CARA INSTALL DI TERMUX
 ```bash
 > pkg install nodejs && pkg install git
-> git clone https://github.com/mantan18220/SELF-BOTWA.git
+> git clone https://github.com/RidwanXyZ/SELF-BOTWA.git
 > cd SELF-BOTWA
 > bash install.sh
 > npm start/node main.js
 ```
 ## CARA INSTALL DI LAPTOP
 ```bash
-> git clone https://github.com/mantan18220/SELF-BOTWA.git 
+> git clone https://github.com/RidwanXyZ/SELF-BOTWA.git 
 > cd SELF-BOTWA
 > npm i
 > npm start/node main.js
@@ -96,4 +96,3 @@
 * [`MRHRTZ`](https://github.com/MRHRTZ)
 * [`HEXAGONZ`](https://github.com/hexagonz)
   
-New Revsjwoe9od
