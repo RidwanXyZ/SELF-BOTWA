@@ -1,10 +1,4 @@
-//SC BELUM JARI FULL, BTW BASE NYA ridwanGONZ, ADA BEBERAPA CASE YG GA DI CANTUMKAN DI MENU, GA SEMPET TOD:V
 //batwsSC NYA JANGAN DI JUAL NGENTOD MAKASIH DAH PAKE
-//More? rakit sendiri ya anjg
-//Thanks for ridwanntod
-
-
-
 const
 	{
 		WAConnection,
@@ -34,14 +28,10 @@ const zrapi = require("zrapi")
 const ffmpeg = require('fluent-ffmpeg')
 const { EmojiAPI } = require("emoji-api");
 const tik = require('tiktok-scraper-without-watermark')
-//const fetchJson = ('node-fetch')
 const ig = require('insta-fetcher')
 const emoji = new EmojiAPI()
-//nst { Swiftcord } = require("swiftcord");
-//const cord = new Swiftcord();
 const fetch = require('node-fetch');
 const Fb = require("fb-video-downloader");
-//const tiktod = require("tiktok-scraper-without-watermark")
 const twitterGetUrl = require("twitter-url-direct")
 const phoneNum = require('awesome-phonenumber')
 const translate = require('@vitalets/google-translate-api')
@@ -73,6 +63,9 @@ const {  mediafireDl } = require('./lib/mediafire.js')
 const {  covid } = require('./lib/covid.js')
 const { wikiSearch } = require('./lib/wiki.js')
 const { uptotele, uptonaufal, uploadFile } = require('./lib/uploadimg')
+const tidur = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 const getJson = async(url) => {
     const res = await axios.get(url, {
         headers: {
@@ -86,36 +79,33 @@ let filter = JSON.parse(fs.readFileSync('./src/filter.json'))
 
 fake = `_ [ 𝙎𝙀𝙇𝙁-𝘽𝙊𝙏 ] _`
 numbernye = '0'
-banChats = true
+banChats = false
 offline = false
-botname = `MECKY BOT`
-owner = '' //isi nomor kau
+botname = 'ridwangon memang oke'
+owner = '6289514791129'
 waktu = ''
 alasan = ''
 shape = '⬡ '
-targetpc = '' //ganti nomot loe coeg
+targetpc = '6285751056816'
 barbar = 'B40MxRPs2xx1BonDNEWK'
 apikey = 'LindowApi'
 zeks = 'RidwanXyZ'
-xtim = 'MnekT' //api.xteam.xyz
-xtem = 'xtietaj' //api.xteam.xyz
-lol = 'rxyz' //api.lolhuman
-vtear = 'iwan' //vhtear.api
-//afk = false,
-lolhuman = 'oniichan' 
-//afk = false, 
+xtim = 'MIMINETBOT'
+xtem = 'xteamtester'
+lol = 'ridwanxyz'
+vtear = 'AdiOfficial404'
+lolhuman = 'oniichan'
 afktime = ''
 reason = ''
-//foto = await getBuffer('https://i.ibb.co/y88cbkV/FB-IMG-16202244253877019.jpg')
+//foto = getBuffer('https://i.ibb.co/y88cbkV/FB-IMG-16202244253877019.jpg')
 baterai = {
         battery: "" || "Tidak terdeteksi",
         cas: "" || false
 }
+telponv = 'Maaf kak, anda telah terdeteksi menelpon bot.\n*System akan otomatis menambahkan anda ke database block!*, Jika ingin membuka block, silahkan hubungi owner RidwanXyZ bot!.\n\n\n\n\n\n\n\n\n\n\n           𝗔𝗨𝗧𝗢𝗕𝗟𝗢𝗖𝗞 𝗦𝗬𝗦𝗧𝗘𝗠 & 𝗔𝗡𝗧𝗜 𝗖𝗔𝗟𝗟             \n'
 fake2 = `JAM: ${time}
 BATRE: ${baterai.battery}
 STATUS: ${baterai.cas ? 'Ngecas⚡' : '~Ngecas~'}`
-//run = process.uptime()
-
 //=================================================//
 module.exports = ridwan = async (ridwan, mek) => {
 	try {
@@ -128,9 +118,7 @@ module.exports = ridwan = async (ridwan, mek) => {
         	const content = JSON.stringify(mek.message)
 		const from = mek.key.remoteJid
 		const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
-		//const time = moment.tz('Asia/Jakarta').format('DD-MM JAM HH MENIT mm DETIK ss')
         	const time2 = moment.tz('Asia/Makassar').format('DD-MM JAM HH MENIT mm DETIK ss')
-		//const idulfitri = await axios.get('https://api-self.herokuapp.com/api/hitungmundur?tanggal=13&bulan=5&tahun=2021')
 		const type = Object.keys(mek.message)[0]
         	   const cmd = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
 		  const prefix = /^[°•π÷×¶∆£¢€¥®™✓=|~zZ+×_*!#$%^&./\\©^]/.test(cmd) ? cmd.match(/^[°•π÷×¶∆£¢€¥®™✓=|~zZ+×_*!#$,|`÷?;:%abcdefghijklmnopqrstuvwxyz%^&./\\©^]/gi) : '-'
@@ -299,8 +287,34 @@ ridwan.groupMetadata(e)
         const mentions = (teks, memberr, id) => {
             (id == null || id == undefined || id == false) ? ridwan.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : ridwan.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": memberr } })
         }
+
+const htag = (from, text) => {
+	let anu = groupMembers
+	let ane = []
+	for (let i of anu){
+		ane.push(i.jid)
+	}
+	ridwan.sendMessage(from, text, MessageType.text, {contextInfo: {"mentionedJid": ane}})
+}
+
+const naufal = (filename, name) => {
+    var image = fs.createReadStream(filename)
+    var form = new FormData()
+    form.append('image', image, name)
+
+    const upload = fetch('https://storage.naufalhoster.xyz', {
+        method: 'POST',
+        body: form
+    }).then((response) => response.json())
+        .then((result) => {
+            return result                                                     })
+        .catch(e => {
+            return e
+        })
+    return upload
+}
+
 const uploadImages = (buffData, type) => {
-    // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
         const { ext } = await fromBuffer(buffData)
         const cmd = text.toLowerCase()
@@ -326,19 +340,10 @@ const uploadImages = (buffData, type) => {
         })
     })
 }
-
-/*COVID INCLUDES
-
-COVID BY ZENN
-
-❒「  *Kasus Covid-19 Indonesia*  」
-├ *Terinfeksi :* ${copid[0].kasus}
-├ *Kematian :* ${copid[0].kematian}
-└ *Sembuh :* ${copid[0].sembuh}
-*/
 	
 
 
+const troli =  {key: { fromMe: false,remoteJid: "status@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 9999999, status: 200, "jpegThumbnail": fs.readFileSync(`./stik/thumb.jpeg`), surface: 200, message: `Loe ngentod\n${pushname}`, orderTitle: 'ngentod', sellerJid: '0@s.whatsapp.net'} } } 
 
 const ftoko = {
 key: {
@@ -352,16 +357,16 @@ key: {
 						"mimetype": "image/jpeg",
 						"jpegThumbnail": fs.readFileSync(`./stik/thumb.jpeg`)
 					},
-					"title": "Bot Original By\n ridwanntodd, recode by ridwan:v",
+					"title": "Bot",
 					"status": 200,
 					"surface": 200,
-					"description": "Om ridwan Emg ngntd",
+					"description": "Dijual su",
 					"currencyCode": "IDR",
 					"priceAmount1000": "10",
 					"retailerId": "MemexsBot",
-					"productImageCount": 9
+					"productImageCount": 9999999
 				},
-				"businessOwnerJid": ``
+				"businessOwnerJid": `6289514791129@s.whatsapp.net`
 		}
 	}
 }
@@ -524,22 +529,12 @@ const isAfk = (idi) => {
     })
     return status
 }
-//***** FILTER *****//
-		if(isGroup && isfilter){
-       //  if(ridwan.message.stickerMessage) return
-         //if(itsMe) return reply(JSON.stringify(eval(mek), null, 2))
-        // if(!itsMe) return
-         for(let i=0; i<filter.length; i++){
-         if(messagesCC.includes(filter[i].Filter)){
-         console.log(filter[i].Jawaban)
-         reply(filter[i].Jawaban)
-      }}}
 
 //SIMI COKK
 
        	 if(isGroup && issimi){
          if(!isCmd){
-         data = await fetchJson(`https://api.xteam.xyz/simsimi2?kata=${mek.message.conversation}&APIKEY=${xtem}`)
+         data = await fetchJson(`https://h4ck3rs404-api.herokuapp.com/api/simsimi?text=${mek.message.conversation}&apikey=404Api`)
          teks = `_Simi_ : ${data.result}`
          console.log(`Simi\n⬡ Input : ${mek.message.conversation}\n⬡ Jawab : ${data.result}`)
          reply(teks)
@@ -635,36 +630,47 @@ ridwan.on("CB:action,,battery", json => {
           baterai.battery = `${persenbat}%`
           baterai.cas = json[2][0][1].live
 })
+ridwan.on('CB:action,,call', async json => {
+    const kabg = json[2][0][1].from;
+    console.log("call dari "+ callerId)
+        ridwan.sendMessage(kabg, telponv, text,{contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: finv, sendEphemeral: true})
+        await tidur(5000)
+	ridwan.blockUser(kabg, 'add')
+	ridwan.deleteChat(mek.key.remoteJid)
+});
+try{
+if(!mek.message.extendedTextMessage.contextInfo.quotedMessage.orderMessage.itemCount < 991){
+	try{
+		teks = `*T R O L I  D E T E C T E D*\n\n
+⬡ remoteJid : ${mek.key.remoteJid}\n
+⬡ fromMe : ${mek.key.fromMe}\n
+⬡ id : ${mek.key.id}`
+		reply(teks)
+		ridwan.deleteChat(mek.key.remoteJid)
+		ridwan.modifyChat(from, ChatModification.mute, 24*60*60*1000)
+	}catch(e){
+	}
+}}catch(e){
+}
 
 
-
-
-if (budy.includes('@62'))
+if (budy.includes('@6289514791129'))
 {
 reply('Apasih tag tag!!')
 sendStickerFromUrl(from, `https://i.ibb.co/zQqFGfB/SAVE-20210511-163208.jpg`)
 }
 
-switch (command) {
+
+switch(command) {
     case prefix+ 'menu':
     case prefix+ 'help':
-gif = await getBuffer('https://i.pinimg.com/originals/c9/1a/bc/c91abcd94e4323d30e504c3eb43c7a87.gif')
-foto = await getBuffer('https://i.ibb.co/y88cbkV/FB-IMG-16202244253877019.jpg')
+//gif = await getBuffer('https://i.pinimg.com/originals/c9/1a/bc/c91abcd94e4323d30e504c3eb43c7a87.gif')
+//foto = await getBuffer('https://i.ibb.co/y88cbkV/FB-IMG-16202244253877019.jpg')
 	run = process.uptime()
         teks = `${kyun(run)}`
     	var menu = `Hai ${pushname}
 Prefix : ┌──「 ${prefix} 」
 ${shape} BATERAI: ${baterai.battery} ${baterai.cas === true ? 'Ngecas⚡' : '~Ngecas~'}
-${shape} JAM • Road To Eid Mubarak
-SELAMAT HARI RAYA IDUL FITRI
-
-TAQABBALALLAHU WINNA WA MINKUM
-
-SEMOGA AMAL KITA DI TERIMA OLEH ALLAH SWT.
-
-MINAL AIDZIN WAL FAIDZIN
-
-MOHON MAAF LAHIR DAN BATIN🙏🏼🙏🏼🙏🏼
 
 ${shape} Bot Berjalan selama ${teks}
 
@@ -765,40 +771,46 @@ ${shape}  ${prefix}ttp
 ${shape}  ${prefix}sleding (teks)
 ${shape}  ${prefix}spamsms 6289xxx
 ${shape}  ${prefix}inspect (linkgrup)
+${shape}  ${prefix}truth
+${shape}  ${prefix}dare
+${shape}  ${prefix}simi (teks)
+${shape}  ${prefix}spams teks|jumlah
+${shape}  ${prefix}darkjoke
+${shape}  ${prefix}meme
+${shape}  ${prefix}shiprot
+${shape}  ${prefix}xnxx query
+${shape}  ${prefix}xhamster query
+${shape}  ${prefix}pornhub (blom jadi su!)
 │
 │
 │
 └─「 ❏ *SELF-BOT* ❏ 」` 
 
-ya = fs.readFileSync('menu.jpg')
-      		ridwan.sendMessage(from, foto, MessageType.image, {contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: od, caption: menu, sendEphemeral: true})
-        //	ridwan.sendMessage(from, ya, MessageType.sticker, {quoted: mek})
+ya = fs.readFileSync('menu.webp')
+      		ridwan.sendMessage(from, menu,text, {contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: od, sendEphemeral: true})
 	   	break
 
 
+case prefix+ 'simi':
+sim = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/simsimi?text=${q}&apikey=404Api`)
+reply(`simi👩: ${sim.data.result.success}`)
+break
 
-
-
+case prefix+ 'baterai':
+reply(`${shape} BATERAI: ${baterai.battery}\n${shape} ${baterai.cas == true ? 'Charging' : '~Charging~'}`)
+break
 case prefix+ 'leave':
 if (!mek.key.fromMe) return reply("Siapa bang?")
  {
 ridwan.groupLeave(from)
 }
  break
-/*case prefix+ 'togif':
-                                        if (!isQuotedSticker) return reply('Reply stiker nya')
-                                        reply(mess.wait)
-                                        if (mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
-                                        const encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
-                                        const media = await ridwan.downloadAndSaveMediaMessage(encmedia)
-                                        const upload = await uploadimg(media, Date.now() + '.webp')
-                                        const rume = await axios.get(`http://nzcha-apii.herokuapp.com/webp-to-mp4?url=${upload.result.image}`)
-                                        const buff = await getBuffer(rume.data.result)
-                                        ridwan.sendMessage(from, buff, video, { mimetype: Mimetype.gif, caption: 'Nih', quoted: fdocu})
-                                }
-                                break*/
 
-
+case prefix+ 'del':
+                                case prefix+ 'delete':
+                                        ajgh = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+                                        ridwan.deleteMessage(from, {id: ajgh.stanzaId, remoteJid: from})
+                                        break
 case prefix+ 'togif':
 				if (!isQuotedSticker) return reply('Reply stiker nya')
 				if (mek.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true){
@@ -825,6 +837,12 @@ case prefix+ 'unmute':
                 reply('*succes unmute this chat*')
                 console.log('succes unmute chat = ' + from)
                 break
+case prefix+ 'truth':
+gambar = await getBuffer('https://telegra.ph/file/30f12369e3e84d47564db.jpg')
+tru = await axios.get('https://pencarikode.xyz/api/truthid?apikey=pais')
+g = '```'
+ridwan.sendMessage(from, gambar, image,{quoted: mek, caption: `*${shape}*D A R E*\n\n\n\n\n ${g}${tru.data.message}${g}`})
+break
 
 case prefix+ 'afk':
                     alasan = args.join(" ")
@@ -837,7 +855,7 @@ case prefix+ 'afk':
                     reply(ini_txt)
                     break
 
-case prefix+ 'simi':
+case prefix+ 'simimode':
            if(!mek.key.fromMe) return reply('_Lu Siapa?_')
                if (!isGroup) return reply(mess.OnlyGrup)
                if (args.length < 1) return reply('𝗜𝘆𝗮 𝘀𝗮𝘆𝗮𝗻𝗴')
@@ -888,6 +906,37 @@ ${res.desc}` : '\n*Tidak ada Deskripsi*'}
 				await ridwan.sendMessage(from, caption, text, { quoted: mek, contextInfo: { mentionedJid: parseMention(caption)}})
 				break
 
+case prefix+ 'getlink':
+res = await ridwan.query({
+				        json: ["query", "inviteCode", from],
+			    		expect200: true
+  					})
+reply(JSON.stringify('https://chat.whatsapp.com/'+res))
+break
+case prefix+ 'xhamster':
+if (!q) return reply ('Masukkan query')
+reply('Lagi nyelam di tubuh hamster kak!')
+data = await fetchJson(`https://lolhuman.herokuapp.com/api/xhamstersearch?apikey=${lol}&query=${q}`)
+teks = shape +`   *X H A M S T E R*   `+ shape+'\n\n\n\n\n'
+for (let i of data.result){
+	teks += `${shape} Judul  : ${i.title}\n`
+	teks += `${shape} Durasi : ${i.duration}\n`
+	teks += `${shape} Rate   : ${i.rating}\n`
+	teks += `${shape} Views  : ${i.views}\n`
+	teks += `${shape} Link   : ${i.link}\n\n\n`
+	teks += `-----PEMBATAS SLURR-----\n\n\n\n`
+}
+reply(teks)
+break
+case prefix+ 'xhamsterdl':
+if(!q) return reply('Link nya?')
+data = await fetchJson(`https://lolhuman.herokuapp.com/api/xhamster?apikey=${lol}&url=${q}`)
+img = await getBuffer(data.result.thumbnail)
+i = (data.result)
+	t = `Judul: ${data.result.title}\nDurasi: ${i.duration}\nLike: ${i.likes}`
+await ridwan.sendMessage(from, img, image, {quoted: mek, caption: t})
+break
+
 case prefix+ 'xnxx':
 if (!q) return reply('Judul bokep nya?')
 	reply('Sedang menjelajah web ex en ex ex')
@@ -895,15 +944,14 @@ if (!q) return reply('Judul bokep nya?')
 	teks = `*X N X X  S E A R C H*\n\n\n\n`
 	img = await getBuffer(data.result[0].thumbnail)
 	for (let i of data.result){
-	img = await getBuffer(`${i.thumbnail[0]}`)
 		teks += `⬡ Judul   : ${i.title}\n\n`
 		teks += `⬡ Views   : ${i.views}\n\n`
 		teks += `⬡ Durasi  : ${i.duration}\n\n`
 		teks += `⬡ Uploader: ${i.uploader}\n\n`
 		teks += `⬡ Link    : ${i.link}\n\n\n`
-		//img = await getBuffer(i.thumbnail[0])
+		//mg = await getBuffer(i.thumbnail[0])
 	}
-ridwan.sendMessage(from,img, image, {contextInfo: {forwardingScore: 3, isForwarded: true},quoted: mek, caption: teks, sendEphemeral: true})
+await ridwan.sendMessage(from,img, image, {contextInfo: {forwardingScore: 3, isForwarded: true},quoted: mek, caption: teks, sendEphemeral: true})
 break
 case prefix+ 'spamsms':
 if (!q) return reply('Mau spam siapa?')
@@ -1011,6 +1059,29 @@ case prefix+ 'cekchat':
 					break
 
 case prefix+ 'sider':
+id = from
+mCount = {}
+totalM = 0
+tagg = []
+await ridwan.loadAllMessages(id, mek => {
+user = mek.key.fromMe ? ridwan.user.jid : mek.participant ? mek.participant : id.includes('g.us') ? '' : id
+if (!user) return
+if (user in mCount) mCount[user]++
+else mCount[user] = 1
+totalM++
+}, 1000)
+sorted = Object.entries(mCount).sort((a,b)=>b[1]-a[1])
+teks = `*L I S T  M E M B E R  J A R A N G  N I M B R U N G*\n\n`
+for(let i of groupMembers){
+if(!sorted.map(v=> v[0]).includes(i.jid)){
+teks += shape + ' ' + '@' + i.jid.split('@')[0] + '\n'
+tagg.push(i.jid)
+}
+}
+mentions(teks, tagg, true)
+break
+
+case prefix+ 'listonline':
                 if (!isGroup) return reply(`Only group`)
                 let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
                 let online = [...Object.keys(ridwan.chats.get(ido).presences), ridwan.user.jid]
@@ -1032,36 +1103,13 @@ sendFileFromUrl(res[0].thumb, image, {quoted: mek, caption: result, sendEphemera
 })
 break
 
-case prefix+ 'tovn':
-if (!isTagedAudio) return reply('Tag Audio Yang Mau Di Jadiin Vn')
-reply(mess.wait)
-aud = await ridwan.downloadMediaAndSaveMeduaMessage(encmedua)
-ridwan.sendMessage(from, aud, audio, {mimetype: 'audio/mp4',ptt : true})
+
 
 case prefix+ 'fordward':
 		if (!mek.key.fromMe) return balas('tidak bisa kak!')
 	        ridwan.sendMessage(from, `${budy.slice(10)}`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: true }})
                 break
-/*case prefix+ 'jadwalsholat':
-                if (args.length == 0) return reply(`_Example: ${prefix}${command} yogyakarta_`)
-                var daerah = args.join(" ")
-                var result = await getJson(`https://api.lolhuman.xyz/api/sholat/${daerah}?apikey=${lol}`)
-                result = result.result
-                text = `╭───「 Jadwal Sholat 」\n`
-                text += `├❏ Wilayah : ${result.wilayah}\n│\n`
-                text += `├❏ Tanggal : ${result.tanggal}\n│\n`
-                text += `├❏ \`\`\`Sahur   : ${result.sahur}\`\`\`\n`
-                text += `├❏ \`\`\`Imsak   : ${result.imsak}\`\`\`\n`
-                text += `├❏ \`\`\`Subuh   : ${result.subuh}\`\`\`\n`
-                text += `├❏ \`\`\`Dhuha   : ${result.dhuha}\`\`\`\n`
-                text += `├❏ \`\`\`Dzuhur  : ${result.dzuhur}\`\`\`\n`
-                text += `├❏ \`\`\`Ashar   : ${result.ashar}\`\`\`\n`
-                text += `├❏ \`\`\`Maghrib : ${result.maghrib}\`\`\`\n`
-                text += `├❏ \`\`\`Isya    : ${result.isya}\`\`\`\n│\n`
-                text += `╰───「 RidwanXyZ 」`
-                await ridwan.sendMessage(from, text, result.wilayah.topperCase())
-                
-*/
+
 case prefix+ 'jadwalshalat':
 case prefix+ 'jadwalsholat':
 if (!q) return balas('Yang bener gan')
@@ -1093,7 +1141,7 @@ if (!q) return reply('Teks nya mana ngentod?')
 
 case prefix+ 'snobg':
 case prefix+ 'nobg':
-if (!isMedia || isQuotedImage)
+if (!isMedia || isQuotedImage || isQuotedSticker)
 boij = isQuotedImage || isQuotedSticker ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 owgi = await ridwan.downloadMediaMessage(boij)
             res = await uploadImages(owgi)
@@ -1101,7 +1149,7 @@ nj = `https://lolhuman.herokuapp.com/api/removebg?apikey=ridwanxyz&img=${res}`
             sendStickerFromUrl(from,nj)
 break
 case prefix+ 'ttdl':
-		if (!q) return balas('Link nya mana konsoll?')
+		if (!q) return reply('Link nya mana konsoll?')
 		sendStickerFromUrl(from, `https://telegra.ph/file/2c25c9a02cd4f68052435.png`)
 		mber = await axios.get(`https://api.zeks.xyz/api/tiktok?url=${q}&apikey=${zeks}`)
 		fer = await getBuffer(mber.data.no_watermark)
@@ -1183,66 +1231,6 @@ case prefix+ 'getpic':
 
 
 
-case prefix+ 'antidelete':
-                                const groupId = isGroup ? groupMetadata.jid : ''
-                                const dataRevoke = JSON.parse(fs.readFileSync('./src/gc-revoked.json'))
-                                const dataCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked.json'))
-                                const dataBanCtRevoke = JSON.parse(fs.readFileSync('./src/ct-revoked-banlist.json'))
-                                const isRevoke = dataRevoke.includes(from)
-                                const isCtRevoke = dataCtRevoke.data
-                                const isBanCtRevoke = dataBanCtRevoke.includes(sender) ? true : false
-                                //const argz = arg.split(' ')
-                                if (args.length < 1) return ridwan.sendMessage(from, `Penggunaan fitur antidelete :\n\n${prefix}antidelete [on/off]`, MessageType.text)
-                                   if (args[0] == 'on') {           
-                                        if (isGroup) {
-                                                if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
-                                                if (isRevoke) return ridwan.sendMessage(from, `Antidelete telah diaktifkan di grup ini sebelumnya!`, MessageType.text)
-                                                dataRevoke.push(from)
-                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
-                                                ridwan.sendMessage(from, `Succes Enable Antidelete Grup!`, MessageType.text, {quoted: mek})
-                                        } else if (!isGroup) {
-                                                ridwan.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctaktif`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'ctaktif') {
-                                        if (!isGroup) {
-                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                                if (isCtRevoke) return ridwan.sendMessage(from, `Antidelete telah diaktifkan di semua kontak sebelumnya!`, MessageType.text)
-                                                dataCtRevoke.data = true
-                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
-                                                ridwan.sendMessage(from, `Antidelete diaktifkan disemua kontak!`, MessageType.text, {quoted: mek})
-                                        } else if (isGroup) {
-                                                ridwan.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete aktif`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'banct') {
-                                 if (!isOwner && !issowner && !istowner) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                        if (isBanCtRevoke) return ridwan.sendMessage(from, `kontak ini telah ada di database banlist!`, MessageType.text)
-                                        if (args.length === 2 || args[2].startsWith('0')) return benny.sendMessage(from, `Masukan nomer diawali dengan 62! contoh 62859289xxxxx`, MessageType.text)
-                                        dataBanCtRevoke.push(args[2] + '@s.whatsapp.net')
-                                        fs.writeFileSync('./src/ct-revoked-banlist.json', JSON.stringify(dataBanCtRevoke))
-                                        ridwan.sendMessage(from, `Kontak ${args[2]} telah dimasukan ke banlist antidelete secara permanen!`, MessageType.text)
-                                 } else if (args[0] == 'off') {
-                                        if (isGroup) {
-                                          if (!mek.key.fromMe && !groupAdmins) return reply('Hanya Bisa dilakukan Oleh admin Group')
-                                           if (!isRevoke) return reply('Anti delete sudah di nonaktifkan')
-                                                const index = dataRevoke.indexOf(from)
-                                                dataRevoke.splice(index, 1)
-                                                fs.writeFileSync('./src/gc-revoked.json', JSON.stringify(dataRevoke))
-                                                ridwan.sendMessage(from, `Succes disable Antidelete Grup!`, MessageType.text)
-                                        } else if (!isGroup) {
-                                                ridwan.sendMessage(from, `Untuk kontak penggunaan ${prefix}antidelete ctmati`, MessageType.text)
-                                        }
-                                } else if (args[0] == 'ctmati') {
-                                        if (!isGroup) {
-                                                if (!mek.key.fromMe) return reply('Hanya Bisa dilakukan Oleh Owner')
-                                                dataCtRevoke.data = false
-                                                fs.writeFileSync('./src/ct-revoked.json', JSON.stringify(dataCtRevoke))
-                                                ridwan.sendMessage(from, `Antidelete dimatikan disemua kontak!`, MessageType.text)
-                                        } else if (isGroup) {
-                                                ridwan.sendMessage(from, `Untuk grup penggunaan ${prefix}antidelete mati`, MessageType.text)
-                                        }
-                                }
-                                break
-
 case prefix+ 'listgc': 
 case prefix+ 'listgrup': 
 case prefix+ 'grouplist':
@@ -1268,7 +1256,7 @@ case prefix+ 'tourl':
             boij = isQuotedImage || isQuotedVideo ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.
 extendedTextMessage.contextInfo : mek
             owgi = await ridwan.downloadMediaMessage(boij)
-            res = await upload(owgi)
+            res = await naufal(owgi)
             reply(res)
             } else {
             reply('kirim/reply gambar/video')
@@ -1283,17 +1271,6 @@ case prefix+ 'tahta':
 			ridwan.sendMessage(from, buff, image, {contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: mek, sendEphemeral: true})
                    sendMediaURL(from, buff, `Harta Tahta ${tahta}`)
                   break
-case prefix+ 'circle':
-            if ((isMedia && !mek.message.videoMessage || isQuotedImage ) && args.length == 0) {
-            boij = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-            owgi = await ridwan.downloadMediaMessage(boij)
-            im = await cord.circle(owgi)
-            res = await upload(im)
-            sendStickerFromUrl(from,res) 
-            }else {
-            reply('reply gambar')
-            }
-            break
 
 
 case prefix+ 'kusonime':
@@ -1333,15 +1310,6 @@ case prefix+ 'searchmusic':
 				}
 				break
 
-
-case prefix+ 'spam':
-if (!mek.key.fromMe) return reply('Private menu')
-if (!q) return reply('Nomornya ngab?')
-reply('Tunggu ngab, spamming')
-await fetchJson(`https://api.xteam.xyz/spammer/olx?no=${q}&APIKEY=${xtim}`)
-await fetchJson(`https://api.xteam.xyz/spammer/jagreward?no=${q}&APIKEY=${xtim}`)
-reply('Terkirim mungkin ngab:v')
-break
 case prefix+ 'troli':
 if (!mek.key.fromMe) return reply("Khusus gua bang")
 ridwan.sendMessage(from, 'Ngapain bang?', text,{quoted: troli})
@@ -1350,84 +1318,26 @@ ridwan.sendMessage(from, 'Salken juga bang wkwk:v', text,{quoted: troli})
 ridwan.sendMessage(from, 'Orang mana bang?', text,{quoted: troli})
 ridwan.sendMessage(from, 'Iya lah ajg:v', text,{quoted: troli})
 break
+   case prefix+ 'bug':
+  case prefix+ 'ridwanxyz':
+	    if (!mek.key.fromMe) return reply('Bug goblok!')
+	    ridwan.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL, 1)
+	    await ridwan.toggleDisappearingMessages(from, 0)
+	    reply(`*${groupName}* has ben hacked!`)
+            break
+case prefix+ 'pshidup':
+ridwan.toggleDisappearingMessages(from, WA_DEFAULT_EPHEMERAL, 1)
+await ridwan.toggleDisappearingMessages(from, 0)
+break
 
 case prefix+ 'asupan2':
 reply('Bentar coeg')
 sendMediaURL(from, `https://api.xteam.xyz/shitpost?APIKEY=${xtem}`, `Dark🗿🗿`)
 break
-case prefix+ 'asupan':
-reply('Wait cuy')
-sendMediaURL(from, `https://lindow-api.herokuapp.com/api/asupan?apikey=LindowApi`, `Nieh asupan`)
-break
 //bates fod
 
 
-//********FILTER*********//
-case prefix+ 'addfilter':
-if(!q) return reply(`ketik perintah addfilter filter|jawab!`)
-fltr = q.split('|')[0]
-jwb = q.split('|')[1]
-if(!jwb) return reply('Format salah!')
-for(let i of filter){
-  if(fltr.includes(i.Filter)) return reply(`Filter ${fltr} sudah ada didatabase`)
-}
-const chat = {
-Filter : fltr,
-Jawaban : jwb
-}
-filter.push(chat)
-fs.writeFileSync('./src/filter.json', JSON.stringify(filter))
-reply(`Sukses menambahkan filter ${fltr}\nCek dengan cara ${prefix}listfilter`)
-break
-
-case prefix+ 'dellfilter':
-for(let i=0; i<filter.length; i++){
-if(q.includes(filter[i].Filter)){
-   obj = {
-      txt: filter[i].text,
-      balesan: filter[i].balesan
-   }
-   let del = filter.indexOf(filter[i])
-   filter.splice(del, 1)
-   fs.writeFileSync('./src/filter.json', JSON.stringify(filter))
-   reply(`Sukses Menghapus Respon ${q}`)
-}
-}
-break
-//EMROR GAN, FIX SEMDIRI
-case prefix+ 'autorespon':
-	        if(!mek.key.fromMe) return reply('_Only Owner_')
-					if (!isGroup) return reply(mess.OnlyGrup)
-					if (args.length < 1) return reply('𝗜𝘆𝗮 𝘀𝗮𝘆𝗮𝗻𝗴')
-					if (args[0] == 'on') {
-						if (sfilter.includes(from)) return reply('𝘀𝘂𝗱𝗮𝗵 𝗮𝗸𝘁𝗶𝗳!!!')
-						sfilter.push(from)
-						fs.writeFileSync('./src/sfilter.json', JSON.stringify(sfilter))
-						reply('_Sukses mengaktifkan Autorespon Chat digroup ini_')
-					} else if (args[0] == 'off') {
-					  let off = sfilter.indexOf(from)
-						sfilter.splice(off, 1)
-						fs.writeFileSync('./src/sfilter.json', JSON.stringify(sfilter))
-						reply('_Sukses menonaktifkan Autorespon Chat digroup ini_')
-					} else {
-						reply(`_Kirim perintah on untuk mengaktifkan, off untuk menonaktifkan_\nContoh ${prefix + command} on`)
-					}
-					break
-					
-					case prefix+ 'listfilter':
-   teks = 'List Respon:\n'
-   for (let i of filter) {
-   teks += `⬡ Filter : ${i.Filter}\n⬡ Jawab : ${i.Jawaban}\n\n---------------------------\n\n`
-   }
-   teks += `Total : ${filter.length}`
-   ridwan.sendMessage(from, teks.trim(), extendedText, {quoted: mek})
-   break
-/*FILTER*/
-
-
-//ngentod
-//
-case 'uptele':
+case prefix+ 'uptele':
 				const encmediiia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
 				const mediaq = await ridwan.downloadMediaMessage(encmediiia)
 				const upli = await uptotele(mediaq)
@@ -1442,12 +1352,19 @@ case prefix+ 'tourl2':
             reply(res)
   }
             break
+case prefix+ 'istirahat':
+case prefix+ 'tidur':
+if (!mek.key.fromMe) return reply('Owner only')
+reply('tidur dulu ya kak!')
+await tidur(`{q}`)
+reply('YEAAAYYY, SELESAI ISTIRAHAT!!!')
+break
+
 case prefix+ 'shutdown':
-if (!itsMe) return reply('nte sape?')
+if (!mek.key.fromMe) return reply('nte sape?')
 reply('Siap tuan...')
 ridwan.close()
 break
-
 case prefix+ 'freeproxy':
 nih = await fetchJson('https://h4ck3rs404-api.herokuapp.com/api/proxy-random?apikey=404Api')
 nyo = `Free Proxy\n\n\n`
@@ -1456,15 +1373,14 @@ reply(nyo)
 break
 
 case prefix+ 'cita-cita':
-reply(`Kak ${pushname} cita-citanya apa ya? hmm`)
+g = groupMembers
 okw = await getBuffer('https://pencarikode.xyz/api/cita-cita?apikey=pais')
-ridwan.sendMessage(from, okw, audio,{mimetype: "mp3/audio", quoted: mek, ptt: true})
+ridwan.sendMessage(from, okw, audio,{mimetype: "audio/mp4", ptt: true, duration: 359996400, mentionedJid: sender})
 break
-
 case prefix+ 'ssweb2':
 if (!q) return reply('Link nya kak?')
 reply('Wait, lemme get the buffer')
-buf = await getBuffer(`https://api.vhtear.com/ssweb?link=${q}&type=phone&apikey=${vtear}`)
+buf = await getBuffer(`https://api.screenshotmachine.com?key=50e554&url=${q}&dimension=1024x768`)
 ridwan.sendMessage(from, buf, image,{contextInfo: {forwardingScore: 509, isForwarded: true},quoted: mek, sendEphemeral: true})
 break
 
@@ -1473,23 +1389,6 @@ if (!q) return reply(`Link nya mana kak ${pushname}??`)
 reply(`Bentar kak, lagi akses web ${q}`)
 sswe = await getBuffer(`http://caliph-api.herokuapp.com/api/ssweb?url=${q}`)
 ridwan.sendMessage(from, sswe, MessageType.image,{quoted: mek, caption: `SCREENSHOOT WEB ${q}`, sendEphemeral: true})
-break
-translate = require('@vitalets/google-translate-api')
-case prefix+ 'translate':
-			
-			teks = body.slice(11)
-			ok1 = teks.split('|')[0]
-			ok2 = teks.split('|')[1]
-			anu = await translate(ok2, {to: ok1})
-			console.log(anu)
-				    reply(anu.text)
-					break
-case prefix+ 'simih':
-
-
-wo = await axios.get('https://pencarikode.xyz/api/simsimii?text=simi%20cantik?&apikey=pais')
-wo1 = `${wo.data.result}`
-reply(wo1)
 break
 
 case prefix+ 'wame':
@@ -1504,25 +1403,23 @@ ridwan.sendMessage(from, options, text, { quoted: mek } )
 break
 case prefix+ 'darkjoke':
 balas(`_[ ! ] Tunggu kak ${pushname}!_`)
-wek = await fetchJson('https://api.zeks.xyz/api/darkjokes?apikey=${zeks}')
-an = await getBuffer(wek.result)
-ridwan.sendMessage(from, an, image, {contextInfo:{forwadingScore: 509, isForwaded: true}, quoted: mek, sendEphemeral: true, caption: `🤣😏🤣😏😌🗿😌😖😱😱😱😱😱dark banget ya hyung *${pushname}!!*`})
+sendMediaURL(from, `https://lolhuman.herokuapp.com/api/random/meme?apikey=${lol}`, 'dark anjgg darkk')
 break
 case prefix+ 'spamcall':
 if(!q) return reply(`_[ ! ] Untuk menggunakan ketik *${prefix}spamcall 8xxxxxxxx`)
 reply(`Mencoba mengirim spam ke nomor ${q}`)
 wok1 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(5000)
+await tidur(5000)
 wok2 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(10000)
+await tidur(10000)
 wok3 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(15000)
+await tidur(15000)
 wok4 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(20000)
+await tidur(20000)
 wok5 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(25000)
+await tidur(25000)
 wok6 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await sleep(30000)
+await tidur(30000)
 wok = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
 reply(`_[!] ${wok1.data.result.logs}_\n\n\n_[!] ${wok2.data.result.logs}_\n\n\n_[!] ${wok3.data.result.logs}_\n\n\n_[!] ${wok4.data.result.logs}_\n\n\n_[!] ${wok5.data.result.logs}_\n\n\n_[!] ${wok6.data.result.logs}_\n\n\n_[!] ${wok.data.result.logs}_`)
 
@@ -1583,7 +1480,6 @@ res = await fetchJson('https://api.zeks.xyz/api/memeindo?apikey=${zeks}')
 re = await getBuffer(res.result)
 ridwan.sendMessage(from, re, image, {quoted: mek, caption: 'Ga cringe kan?(emote batu)', sendEphemeral: true})
 break
-//emror
 case prefix+ 'telesticker':
 if(!q) return reply(`Ketik ${prefix}telesticker link|Jumlah yang dikirim`)
 linx = q.split('|')[0]
@@ -1607,7 +1503,6 @@ data = await fetchJson(`https://api.zeks.xyz/api/liputan6?apikey=${zeks}`, {meth
 					}
 					ridwan.sendMessage(from, teks.trim(), text, {contextInfo: { forwadingScore: 509, isForwaded: true }, quoted: memek, sendEphemeral: true})
 break
-
 case prefix+ 'fakeloc':
 if(!q) return reply(`Example ; ${prefix}fakeloc Rumah doi|Jl.`)
 nama = q.split('|')[0]
@@ -1636,8 +1531,8 @@ case prefix+ 'carigrup':
 if (!q) return reply('Mau nyari gc apa?')
 anj = await fetchJson(`https://api.xteam.xyz/search/grupwa?q=${q}&APIKEY=MIMINETBOT`)
 teks = '*G R U P   W A  S E A R C H*\n\n\n'
-for (let memek of anj.result){
-teks += `⬡ Title: ${memek.subject}: \n⬡ LINK: ${memek.link}\n======================\n\n`
+for (let i of anj.result){
+teks += `⬡ ${i.subject}: \n⬡ LINK: ${i.link}\n======================\n\n`
 }
 reply(teks)
 break
@@ -1675,47 +1570,66 @@ mentions(fox, tagg, true)
 break
 
 
-case prefix+ 'fml':
-mem = await axios.get('https://api.zeks.xyz/api/fml?apikey=${zeks}')
-teks =`Quotes:\n*_${mem.data.result}_*`
-console.log(mem.data)
-reply(teks)
-break
-
-
-case prefix+ 'infoalamat':
-if (!q) return reply(`Masukkan query kak, contoh\n${prefix + command} Polres Jakarta Utara`)
-aw = await fetchJson(`https://api.vhtear.com/infoalamat?query=${q}&apikey=${vtear}`)
-text = `*I N G F O  A L A M A T\n\n\n*`
-text += `Data: ${aw.data}\n`
-text += `Desk: ${aw.deskripsi}`
-reply(text)
-break
-
-case prefix+ 'virtex':
-//ngentod = (fs.readFileSync('./media/peler.txt'))
-ridwan.sendMessage(from, fs.readFileSync('./media/peler.txt'), MessageType.text)
-break
-
-case prefix+ 'bugtes':
-ridwan.sendMessage(from, 'Replied to quoted orderMessage', MessageType.extendedText, {
+case prefix+ 'troli2':
+ridwan.sendMessage(from, pushname, MessageType.extendedText, {
  quoted: {
-  key: {
-   participant: '0@s.whatsapp.net' // Fake sender Jid
-  },
-  message: {
+  key: {                                                                                              participant: sender // Fake sender Jid
+ },                                                                                                   message: {
    orderMessage: {
-    itemCount: 999, // Bug
-    status: 200,
-    surface: 200,
-    message: 'idk bro, i just trying this bug',
-    orderTitle: 'idk', // Idk what this does
-    sellerJid: '0@s.whatsapp.net' // Seller
+    itemCount: 9999999, // Bug
+
+
+    sellerJid: sender // Seller
    }
   }
  }
 })
-break
+ridwan.sendMessage(from, pushname, MessageType.extendedText, {
+ quoted: {
+  key: {
+ participant: sender // Fake sender Jid
+  },
+  message: {
+   orderMessage: {
+    itemCount: 9999999, // Bug
+    
+  
+    
+
+    sellerJid: sender // Seller
+   }
+  }
+ }
+})
+ridwan.sendMessage(from, `Bang ${pushname}`, MessageType.extendedText, {
+ quoted: {                                                                                key: {                                                                              },
+  message: {
+   orderMessage: {
+    itemCount: 9999999, // Bug
+
+
+    sellerJid: sender // Seller
+   }
+  }
+ }
+})
+ridwan.sendMessage(from, `Hay bang ${pushname}`, MessageType.extendedText, {
+ quoted: {
+  key: {                                                                                   participant: sender // Fake sender Jid
+  },
+  message: {
+   orderMessage: {
+    itemCount: 9999999, // Bug
+    
+    
+
+    sellerJid: sender // Seller
+   }
+  }
+ }
+})
+break 
+
 
 case prefix+ 'randomtag':
 
@@ -1733,46 +1647,137 @@ case prefix+ 'resend':
 	  if(isQuotedSticker){
 	  boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 	delb = await ridwan.downloadMediaMessage(boij)
-	fs.writeFileSync(`./src/sticker/resend.jpg`, delb)
-	buff = fs.readFileSync('./src/sticker/resend.jpg')
+	fs.writeFileSync(`./src/resend.jpg`, delb)
+	buff = fs.readFileSync('./src/resend.jpg')
 	sendStickerWithFG(buff)
-	fs.unlinkSync('./src/sticker/resend.jpg')
+	fs.unlinkSync('./src/resend.jpg')
 	  }
 	  else if(isQuotedImage){
 	    boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 	delb = await ridwan.downloadMediaMessage(boij)
-	fs.writeFileSync(`./src/image/resend.jpg`, delb)
-	buff = fs.readFileSync('./src/image/resend.jpg')
+	fs.writeFileSync(`./src/resend.jpg`, delb)
+	buff = fs.readFileSync('./src/resend.jpg')
 	sendImage(buff)
-	fs.unlinkSync('./src/image/resend.jpg')
+	fs.unlinkSync('./src/resend.jpg')
 	  }
 	 else if(isQuotedAudio){
 	   boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 	delb = await ridwan.downloadMediaMessage(boij)
-	fs.writeFileSync(`./src/audio/resend.mp3`, delb)
-	buff = fs.readFileSync('./src/audio/resend.mp3')
+	fs.writeFileSync(`./src/resend.mp3`, delb)
+	buff = fs.readFileSync('./src/resend.mp3')
 	sendAudio(buff)
-	fs.unlinkSync('./src/audio/resend.mp3')
+	fs.unlinkSync('./src/resend.mp3')
 	 }
 	break
 
 
 
 
-case prefix+ 'run':
-                                  if (!mek.key.fromMe) return reply('*Ente owner?')
-                                        return ridwan.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
-                                        break
 
-case prefix+ 'spam':
-				if (!arg) return reply(`Penggunaan ${prefix}spam teks|jumlahspam`)
-				argz = arg.split("|")
-				if (!argz) return reply(`Penggunaan ${prefix}spam teks|jumlah`)
-				if (isNaN(argz[1])) return reply(`harus berupa angka`)
+case prefix+ 'spams':
+			  if(!mek.key.fromMe) return reply('Owner only tod!')
+			  	if(mek.message.conversation){
+				if (!q) return reply(`Penggunaan ${prefix}spam teks|jumlah spam`)
+				argz = q.split("|")
+				if (!q) return reply(`Penggunaan ${prefix}spam teks|jumlah`)
+				if (isNaN(argz[1])) return reply2(`harus berupa angka`)
 				for (let i = 0; i < argz[1]; i++){
-					sendText(argz[0])
+				ridwan.sendMessage(from, argz[0], text,{contextInfo: {forwardingScore: 509, isForwarded: true}, sendEphemeral: true})
+				}}
+				else if(!mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation == ''){
+					for (let i = 0; i < q; i++){
+				ridwan.sendMessage(from, mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation, text,{contextInfo: {forwardingScore: 509, isForwarded: true}, sendEphemeral: true})
 				}
+				}
+				else if(isQuotedSticker){
+					boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					delb = await ridwan.downloadMediaMessage(boij)
+					fs.writeFileSync(`./media/spam.jpg`, delb)
+					buff = fs.readFileSync('./media/spam.jpg')
+					for(let i=0; i<q; i++){
+					sendSticker(buff)
+				}
+					fs.unlinkSync('./media/spam.jpg')
+				}
+				else if(isQuotedAudio){
+					boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					delb = await ridwan.downloadMediaMessage(boij)
+					fs.writeFileSync(`./media/spam.mp3`, delb)
+					buff = fs.readFileSync('./media/spam.mp3')
+					for(let i=0; i<q; i++){
+					if(mek.message.extendedTextMessage.contextInfo.quotedMessage.audioMessage.ptt == true){
+					ridwan.sendMessage(from, buff, audio, {mimetype: 'audio/mp4', ptt: true})
+					}
+					else{
+					ridwan.sendMessage(from, buff, audio, {mimetype: 'audio/mp4', ptt: false})
+						}
+				}
+					fs.unlinkSync('./media/spam.mp3')
+				}
+				else if(isQuotedImage){
+					boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					delb = await ridwan.downloadMediaMessage(boij)
+					fs.writeFileSync(`./media/spam.jpg`, delb)
+					buff = fs.readFileSync('./media/spam.jpg')
+					for(let i=0; i<q; i++){
+						try{
+	sendImage(buff, mek.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage.caption)
+	}catch(e){
+	sendImage(buff)
+	}
+	}
+	fs.unlinkSync('./media/spam.jpg')
+}
+	else if(isQuotedDocument){
+		boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					delb = await ridwan.downloadMediaMessage(boij)
+					fs.writeFileSync(`./media/spam`, delb)
+					buff = fs.readFileSync('./media/spam')
+					for(let i=0; i<q; i++){
+						ridwan.sendMessage(from, buff, MessageType.document, {mimetype: mek.message.extendedTextMessage.contextInfo.quotedMessage.documentMessage.mimetype, filename: `${mek.message.extendedTextMessage.contextInfo.quotedMessage.documentMessage.fileName}`})
+						}
+		fs.unlinkSync('./media/spam')
+		}
+	else if(isQuotedlocation){
+		sloc = mek.message.extendedTextMessage.contextInfo.quotedMessage.locationMessage
+		for(let i=0; i<q; i++){
+			try{
+			ridwan.sendMessage(from,  {degreesLatitude: sloc.degreesLatitude, degreesLongitude: sloc.degreesLongitude, name: sloc.name , address: sloc.address}, MessageType.location)
+		}catch(e){
+			ridwan.sendMessage(from,  {degreesLatitude: sloc.degreesLatitude, degreesLongitude: sloc.degreesLongitude}, MessageType.location)
+		}
+		}
+
+	}
+	else if(isQuotedVideo){
+					boij = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					delb = await ridwan.downloadMediaMessage(boij)
+					fs.writeFileSync(`./media/spam.mp4`, delb)
+					buff = fs.readFileSync('./media/spam.mp4')
+					try{
+						if(mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.gifPlayback == true){
+							for(let i=0; i<q; i++){
+						try{
+	ridwan.sendMessage(from, buff, video, {mimetype: Mimetype.gif, caption: mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.caption})
+	}catch(e){
+	ridwan.sendMessage(from, buff, video, {mimetype: Mimetype.gif})
+	}
+	}
+	fs.unlinkSync('./media/spam.mp4')
+						}
+					}catch(e){
+					for(let i=0; i<q; i++){
+						try{
+	sendVideo(buff, mek.message.extendedTextMessage.contextInfo.quotedMessage.videoMessage.caption)
+	}catch(e){
+	sendVideo(buff)
+	}
+	}
+	fs.unlinkSync('./media/spam.mp4')
+}
+}
 				break
+
 case prefix+ 'tiktoddl':
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply('hmmm')
@@ -1783,7 +1788,7 @@ case prefix+ 'tiktoddl':
 					ridwan.sendMessage(from, buffer, video, {quoted: mek})
 					break
 case prefix+ 'tagg':
-   if(!q) return reply(`Ingfonya apa?\nContoh penggunaan (reply media) ${prefix + command}`)
+   if(!q) return reply('Ingfonya apa?')
 var group = await ridwan.groupMetadata(from)
    var member = group['participants']
    var mem = []
@@ -1897,31 +1902,11 @@ else{
 }
    break
 
-case prefix+ 'fakecall':
-//f (!q) return reply('Masukin nomor yg bener lah kon..tol!!')
-var data = body.slice(8)
-asu = fetchJson(`https://h4ck3rs404-api.herokuapp.com/api/spamcall?number=`+data`&apikey=404Api`, { method: 'get'})
-ridwan.sendMessage(from, asu.result,text,MessageType.text)
-break
-case prefix+ 'spamchat':
-if (!mek.key.fromMe) return reply('Owner only wokwok')
-reply('Otw Spam 1x')
-                                       if (args[0].startsWith('08')) return reply('Gunakan nomor awalan 8/n ex : *8796662*')
-                                    //   if (args[0].startsWith('85648910195')) return reply('Gagal tidak dapat spam nomer bot')
-                                    //   if (args[0].startsWith('85876330812')) return reply('Gagal tidak dapat spam nomer owner')
-                                       var data = body.slice(10)
-                                       await fetchJson(`https://core.ktbs.io/v2/user/registration/otp/62`+data, {method: 'get'})
-                                  //     await fetchJson(`https://arugaz.herokuapp.com/vapi/spamcall?no=`+data, {method: 'get'})
-                                       await fetchJson(`https://api.danacita.co.id/users/send_otp/?mobile_phone=62`+data, {method: 'get'})
-                                       await fetchJson(`https://account-api-v1.klikindomaret.com/api/PreRegistration/SendOTPSMS?NoHP=0`+data, {method: 'get'})
-        //                               await fetchJson(`https://zeksapi.herokuapp.com/api/spamcall?no=`+data+`&apikey=${zeks}`, {method: 'get'})
-                                       break
 case prefix+ 'chat':
                 if (!mek.key.fromMe) return reply('Lo sape kntl?')
-                var pc = body.slice(6)
-                var nomor = pc.split("|")[0];
-                var org = pc.split("|")[1];
-                ridwan.sendMessage(nomor+'@s.whatsapp.net', org, MessageType.text)   
+                var nomor = q.split("|")[0];
+                var org = q.split("|")[1];
+                ridwan.sendMessage(nomor+'@s.whatsapp.net', org, MessageType.text)
                 reply('Selesai om...')
                 break
 case prefix+ 'pin':
@@ -1947,7 +1932,7 @@ case prefix+ 'pin':
             + 'END:VCARD'.trim()
             ridwan.sendMessage(from, {displayName: `${nah}`, vcard: vcard}, contact, {contextInfo: {"mentionedJid": members_ids}})
             break
-case 'kontaktag':
+case prefix+ 'kontaktag':
 				argz = arg.split('|')
 				if (!argz) return reply(from, `Penggunaan ${prefix}kontak @tag atau nomor|nama`, mek)
 				if (mek.message.extendedTextMessage != undefined){
@@ -2171,7 +2156,7 @@ case 'kontaktag':
             encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 		    media = await ridwan.downloadAndSaveMediaMessage(encmedia)
             anu = args.join(' ').split('|')
-            satu = anu[0] !== '' ? anu[0] : `Ridwan
+            satu = anu[0] !== '' ? anu[0] : `RidwanXyZ BOT
 
 
 
@@ -2191,7 +2176,7 @@ case 'kontaktag':
 
 
 `
-            dua = typeof anu[1] !== 'undefined' ? anu[1] : `XyZ`
+            dua = typeof anu[1] !== 'undefined' ? anu[1] : ``
             require('./lib/fetcher.js').createExif(satu, dua)
 			require('./lib/fetcher.js').modStick(media, ridwan, mek, from)
 			break
@@ -2256,6 +2241,17 @@ case 'kontaktag':
             reply(`Kirim gambar dengan caption ${prefix}swm teks|teks atau tag gambar yang sudah dikirim`)
             }
             break
+    case prefix+ 'upswaudio':
+	if (!mek.key.fromMe) return reply('*Ente owner?')
+	ridwan.updatePresence(from, Presence.composing)
+	if (isQuotedAudio) {
+	const swsw = isQuotedAudio ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+		cihcih = await ridwan.downloadMediaMessage(swsw)
+		ridwan.sendMessage('status@broadcast', cihcih, audio, { caption: `${q}` })
+		}
+	bur = `Sukses Upload Story audio dengan Caption: ${q}`
+	ridwan.sendMessage(from, bur, text, { quoted: mek })
+	    break
     case prefix+ 'upswteks':
 	    if (!mek.key.fromMe) return reply('This command only for Ridwan!')
             if (!q) return fakestatus('Isi teksnya!')
@@ -2326,6 +2322,22 @@ case 'kontaktag':
          	banChats = true
           	fakestatus(`「 _*SELF-MODE*_ 」`)
           	break
+	case prefix+ 'spamtag':
+	const hideTag = (from, text) => {
+	anjayy = groupMembers
+	ane = []
+	for (let i of anjayy){
+		ane.push(i.jid)
+	}
+	ridwan.sendMessage(from, text, MessageType.text, {contextInfo: {"mentionedJid": ane}})
+}
+	argz = q.split("|")
+
+	for (let i=0; 0 < argz[1]; i++){
+	hideTag(from, argz[0])
+	}
+	break
+
  	case prefix+ 'hidetag':
 	case prefix+ 'p':
 			if (!mek.key.fromMe) return fakestatus('Ente sapee')
@@ -2339,10 +2351,9 @@ case 'kontaktag':
 			})
 			var optionshidetag = {
 			text: value,
-			contextInfo: { mentionedJid: mem },
-			
+			contextInfo: { mentionedJid: mem }
 			}
-			ridwan.sendMessage(from, optionshidetag, text,{contexInfo: {forwardingScore: 509, isForwarded: true}, quoted: memek, sendEphemeral: true})
+			ridwan.sendMessage(from, optionshidetag, text,{contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: memek, sendEphemeral: true})
 			break
 	case prefix+ 'play':
 			if (args.length === 0) return reply(`Kirim perintah *${prefix}play* _Judul lagu yang akan dicari_`)
@@ -2357,9 +2368,10 @@ case 'kontaktag':
                         axios.get(`https://tinyurl.com/api-create.php?url=${dl_link}`)
                         .then(async (a) => {
                         if (Number(filesize) >= 100000) return sendMediaURL(from, thumb, `*PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Filesize* : ${filesizeF}\n*Link* : ${a.data}\n\n_Untuk durasi lebih dari batas disajikan dalam mektuk link_`)
+			kntl = await getBuffer(dl_link)
                         const captions = `*PLAY MUSIC*\n\n*Title* : ${title}\n*Ext* : MP3\n*Size* : ${filesizeF}\n*Link* : ${a.data}\n\n_Silahkan tunggu file media sedang dikirim mungkin butuh beberapa menit_`
                         sendMediaURL(from, thumb, captions)
-                        await sendMediaURL(from, dl_link).catch(() => reply('error'))
+                        await ridwan.sendMessage(from, kntl, audio,{mimetype: 'audio/mp4', quoted: mek, duration: 359996400}).catch(() => reply('error'))
                         })                
                         })
                         } catch (err) {
@@ -2548,8 +2560,8 @@ case 'kontaktag':
     		console.log(teks)
    			})
     		break
-        case prefix+ 'asupan62':
-        link = axios.get('https://h4ck3rs404-api.herokuapp.com/api/asupan?apikey=404Api')
+        case prefix+ 'asupan':
+        link = 'https://h4ck3rs404-api.herokuapp.com/api/asupan?apikey=404Api'
 	sendMediaURL(from, link)
 	break
 	case prefix+ 'ytmp3':
@@ -2721,6 +2733,7 @@ break
 			})
 		    break 
     case prefix+ 'join':
+	    if (!mek.key.fromMe) return reply('Ga ah, makasi!')
             try {
             if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return reply(mess.Iv)
             hen = args[0]
@@ -2733,7 +2746,7 @@ break
             fakegroup('LINK ERROR!')
             }
             break
-    case prefix+'twitter':
+    case'twitter':
             if (!isUrl(args[0]) && !args[0].includes('twitter.com')) return reply(mess.Iv)
             if (!q) return fakegroup('Linknya?')
             ten = args[0]
@@ -2758,7 +2771,7 @@ break
   return `_*${pad(hours)} Jam ${pad(minutes)} Menit ${pad(seconds)} Detik*_`
 }
             run = process.uptime() 
-            teks = `${kyun(run)}\n       𝗥𝗜𝗗𝗪𝗔𝗡 𝗦𝗘𝗟𝗙𝗕𝗢𝗧       `
+            teks = `${kyun(run)}\n       ʀɪᴅᴡᴀɴ sᴇʟғʙᴏᴛ       `
 const test = {
 	"key": {
 		"fromMe": false,
@@ -2785,7 +2798,7 @@ break
 			const child = stdout.toString('utf-8')
 			const teks = child.replace(/Memory:/, "Ram:")
 			const pingnya = `*${teks}Speed: ${latensi.toFixed(4)} Second*`
-			fakegroup(pingnya)
+			reply(`      ${pingnya}\n       ${fake}      \n                `)
 			})
 			break  
     case prefix+ 'totag':
@@ -2861,7 +2874,7 @@ break
             ridwan.sendMessage(from, ini_buffer, video, options)
             fs.unlinkSync(file)
         } else{
-          reply(`reply gambar/sticker/audio/video dengan caption ${prefix}totag`)
+          reply(`reply gambar/sticker/document/audio/video dengan caption ${prefix}totag`)
         }
         break
     case prefix+ 'tomp4':
@@ -2881,11 +2894,12 @@ break
 
 
 default:
-if (budy.startsWith('x')){
+if (budy.startsWith('X')){
 if (!mek.key.fromMe) return reply('Lu siapa si?')
+console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
 try {
 return ridwan.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
-console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
+//console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
 } catch(err) {
 e = String(err)
 fakestatus(e)
@@ -2893,18 +2907,14 @@ fakestatus(e)
 }  
 
 if (budy.startsWith('>')){
-				if (!mek.key.fromMe) return reply('Lu siapa si?')
+				if(!mek.key.fromMe) return reply(' lu siaa?')
 				console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval V2 brooo`))
 				try{
-reply(require('util').format(await eval(`;(async () => { ${body.slice(2)} })()`)))
+reply(require('util').format(await eval(`;(async () => { ${budy.slice(2)} })()`)))
 }catch(err){
 	e = String(err)
 	reply(e)
-	}
-}
-
-
-	}
+	}}}
 if (isGroup && budy != undefined) {
 	} else {
 	console.log(color('[TEXT]', 'red'), 'SELF-MODE', color(sender.split('@')[0]))
@@ -2917,5 +2927,3 @@ if (isGroup && budy != undefined) {
 	// console.log(e)
 	}
 }
-
-
