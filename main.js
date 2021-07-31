@@ -14,10 +14,11 @@ require('./index.js')
 nocache('./index.js', module => console.log(`${module} is now updated!`))
 
 const starts = async (hexa = new WAConnection()) => {
-    hexa.logger.level = 'warn'
+  hexa.version = [2, 2119, 6]
+  hexa.logger.level = 'warn'
     console.log(banner.string)
     hexa.on('qr', () => {
-        console.log(color('[','white'), color('!','red'), color(']','white'), color(' Scan bang'))
+        console.log(color('[','white'), color('!','red'), color(']','white'), color('SCAN KEMTOD'))
     })
 
     fs.existsSync('./session.json') && hexa.loadAuthInfo('./session.json')
